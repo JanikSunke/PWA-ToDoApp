@@ -12,31 +12,6 @@ code {
     monospace;
 }
 
-.drag {
-  margin-right: 15px;
-  cursor: move;
-}
-
-.App ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.App ul li {
-  padding: 10px 20px;
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  line-height: 1;
-  border-style: groove;
-}
-
-.burgermenu {
-  transform: rotate(-90deg);
-  margin: 1rem;
-}
-
-.content {
-  margin: 1rem;
+.rotate-x {
+  transform: rotate(90deg);
 }

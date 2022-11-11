@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Button, ListGroup, ListGroupItem, Row, Col } from "react-bootstrap";
 
 
-export default function DragableList({list, setList, title}) {
+export default function DragableList({list, setList, onCheck, onDelete, title}) {
     const [draggedItem, setDraggedItem] = useState();
 
     const onDragStart = (e, index) => {
@@ -32,20 +33,29 @@ export default function DragableList({list, setList, title}) {
         return (
           <div>
               <h3>{title}</h3>
-              <ul>
+              <ListGroup variant="flush">
                 {list.map((item, idx) => (
-                  <li key={item} onDragOver={() => onDragOver(idx)}>
-                    <div
-                      className="drag"
-                      draggable
-                      onDragStart={(e) => onDragStart(e, idx)}
-                    >
-                    <p className="burgermenu">|||</p>
-                    </div>
-                    <span className="content">{item}</span>
-                  </li>
+                  <ListGroupItem key={idx} onDragOver={() => onDragOver(idx)}>
+                    <Row direction="horizontal" gap={5}>
+                      <Col
+                        className="rotate-x"
+                        draggable
+                        onDragStart={(e) => onDragStart(e, idx)}
+                      >
+                      <p className="m-20">|||</p>
+                      </Col>
+                      <Col className="m-auto">{item}</Col>
+                      <Col>
+                      {onCheck != null && <Button variant="light" onClick={() => onCheck(idx)}>✔</Button>}
+                      </Col>
+                      <Col>
+                      <Button variant="light" onClick={() => onDelete(idx)}>❌</Button>
+                      </Col>
+                    </Row>
+                  </ListGroupItem>
                 ))}
-              </ul>
+              </ListGroup>
           </div>
         );
     }
+
