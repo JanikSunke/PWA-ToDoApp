@@ -1,10 +1,11 @@
 import DragableList from "./DragableList";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { InputGroup, Form, Button, Container } from "react-bootstrap";
+import { DoneListContext, TodoListContext } from "./ListProvider";
 
 function ToDo() {
-  const [toDoList, setToDoList] = useState(["Dinner","Assignment"]);
-  const [doneList, setDoneList] = useState(["Tesst"]);
+  const [toDoList, setToDoList] = useContext(TodoListContext);
+  const [doneList, setDoneList] = useContext(DoneListContext);
 
   function addItem(event) {
     event.preventDefault();
